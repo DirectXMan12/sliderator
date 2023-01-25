@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Presentation</title>
+    <script type="text/javascript" src="sample-template/slides.js"></script>
+    <link rel="stylesheet" href="sample-template/slides.css">
+    <link rel="stylesheet" href="sample-template/print.css">
+    <link rel="stylesheet" href="sample-template/highlighting.css">
+  </head>
+  <body>
+    <template id="master-columns">
+      <style>
+        #inner-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #inner-wrapper > #description {
+            padding-top: 10em;
+            flex: 1;
+            column-count: var(--columns, 2);
+            min-height: 0; 
+            font-size: 80%;
+        }
+
+        #inner-wrapper > #footnotes {
+        }
+      </style>
+      <div id="inner-wrapper">
+        <section id="description">
+          <slot></slot>
+        </section>
+        <footer id="footnotes">
+          <slot name="footnotes"></slot>
+        </footer>
+      </div>
+    </template>
+    <template id="master-wide">
+      <style>
+        #inner-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #inner-wrapper > #description {
+            padding-top: 10em;
+            flex: 1;
+        }
+
+        #inner-wrapper > #footnotes {
+        }
+      </style>
+      <div id="inner-wrapper">
+        <section id="description">
+          <slot></slot>
+        </section>
+        <footer id="footnotes">
+          <slot name="footnotes"></slot>
+        </footer>
+      </div>
+    </template>
+    <template id="master-default">
+      <style>
+        #inner-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #inner-wrapper > #description {
+            padding-top: 10em;
+            flex: 1;
+            width: 55%;
+        }
+
+        #inner-wrapper > #footnotes {
+        }
+      </style>
+      <div id="inner-wrapper">
+        <section id="description">
+          <slot></slot>
+        </section>
+        <footer id="footnotes">
+          <slot name="footnotes"></slot>
+        </footer>
+      </div>
+    </template>
+    <template id="master-split">
+      <style>
+        #inner-wrapper {
+            display: grid;
+            grid-template-rows: 1fr min-content;
+            grid-template-columns: 33% 67%;
+            height: 100%;
+        }
+
+        #inner-wrapper > #description {
+            grid-row: 1;
+            grid-column: 1;
+            /*align-self: center;*/
+            padding-top: 10em;
+        }
+
+        ::slotted(figure) {
+            grid-row: 1 / span 2;
+            grid-column: 2;
+        }
+
+        #inner-wrapper > #footnotes {
+            grid-row: 2;
+            grid-column: 1;
+        }
+      </style>
+      <div id="inner-wrapper">
+        <section id="description">
+          <slot></slot>
+        </section>
+        <slot name="figure"></slot>
+        <footer id="footnotes">
+          <slot name="footnotes"></slot>
+        </footer>
+      </div>
+    </template>
+    <main>
+      $body$
+    </main>
+  </body>
+</html>

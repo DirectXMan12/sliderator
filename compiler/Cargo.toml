@@ -1,0 +1,17 @@
+[package]
+name = "sliderator"
+version = "0.1.0"
+authors = ["Solly Ross <sollyross@google.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+pandoc_ast = "*"
+syntect = "3.3.0"
+
+[features]
+default = ["simd"]
+
+# for the html escaping from pulldown-cmark
+simd = []

@@ -1,0 +1,45 @@
+/*
+Copyright 2021 Solly Ross
+*/
+
+@media print {
+    @page {
+        size: 1920px 1080px;
+    }
+
+    body {
+        --target-width: 1920px;
+        --target-height: calc(var(--target-width) * 0.5625);
+
+        --page-width: 1920px;
+        --page-height: 1080px;
+    }
+
+    pres-slide {
+        width: var(--target-width);
+        height: var(--target-height);
+
+        /* split pages here */
+        break-after: page;
+        break-before: page;
+
+        align-self: center;
+        justify-self: center;
+
+        box-shadow: 5px 5px 20px 20px grey;
+        background: white;
+
+        transform: scale(0.95);
+    }
+
+    main {
+        grid-auto-flow: row;
+        grid-template-columns: 100%;
+        grid-auto-rows: var(--page-height); /* force one slide per page while maintaining aspect ratio */
+
+        height: auto;
+        width: var(--page-width);
+
+        background: darkgrey;
+    }
+}

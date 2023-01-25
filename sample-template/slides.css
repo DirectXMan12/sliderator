@@ -1,0 +1,217 @@
+/*
+Copyright 2021 Solly Ross
+*/
+
+@media screen {
+    pres-slide {
+        width: 100%;
+        height: 100%;
+
+        overflow: hidden;
+    }
+
+    main {
+        overflow: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: auto;
+
+        height: 100vh;
+        max-height: 100vw;
+        width:  100vw;
+
+        display: grid;
+        grid-template-rows: 100%;
+        grid-auto-columns: 100%;
+        grid-auto-flow: column;
+    }
+
+    body {
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+pres-slide {
+    padding: 1px;
+    padding-left: 5em;
+    padding-right: 2em;
+
+    font-family: Roboto, "Noto Color Emoji";
+
+    display: block;
+
+    scroll-snap-align: center;
+
+    font-size: 1.35vw;
+}
+
+main {
+    display: grid;
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+dfn {
+    font-style: normal;
+    font-weight: bold;
+}
+
+pre {
+    background: rgb(0, 43, 54);
+    box-shadow: 0px 0px 12px 0 black;
+    color: white;
+    padding: 1em;
+}
+
+figure > pre {
+    height: 100%;
+    overflow-x: auto;
+    flex: 1;
+}
+
+figure {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2em;
+    padding-left: 5em;
+    margin: 0;
+    box-sizing: border-box; /* why isn't this the default */
+}
+
+ul {
+    list-style: none;
+    padding-left: 1em;
+}
+
+/* uls that are first in the body don't get indentation (they're prob the only
+ * thing in there) */
+h1 + ul {
+    padding-left: 0.1em;
+}
+
+ol[slot="footnotes"] {
+    padding-left: 0;
+    font-size: 0.7em;
+}
+
+code.small {
+    font-size: 65%;
+}
+
+code.tiny-comments .comment.line {
+    overflow-x: hidden;
+    text-overflow: clip;
+    width: 50%;
+}
+
+a.footnote-back {
+    text-decoration: none;
+    display: none;
+}
+
+a.footnote-ref {
+    vertical-align: super;
+    font-size: 0.7em;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+pre > code {
+    display: block;
+    padding: 0.5em;
+}
+
+/* display dt, then dd, the break */
+dd, dt {
+    display: inline;
+    line-height: 200%;
+}
+dd::after {
+    content: '\A';
+    white-space: pre;
+}
+
+dd {
+    margin-left: 0;
+}
+dd::before {
+    content: ' ';
+}
+dt {
+    font-weight: bold;
+}
+
+/* yaml diagram */
+#yaml-diagram {
+    margin-top: 2em;
+}
+#yaml-diagram pre {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    width: 100%;
+}
+#yaml-diagram > div::before {
+    content: attr(name);
+    text-orientation: sideways;
+    display: block;
+    writing-mode: vertical-lr;
+    margin: 0.25em 1em;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0.5em;
+}
+#yaml-diagram > div {
+    display: flex;
+}
+#yaml-diagram > div:first-child::before {
+    background: #326ce5;
+    box-shadow: 0px 0px 12px 0 #326ce5;
+}
+#yaml-diagram > div:nth-child(2)::before {
+    background: #e53232;
+    box-shadow: 0px 0px 12px 0 #e53232;
+}
+#yaml-diagram > div:nth-child(3)::before {
+    background: #7de532;
+    box-shadow: 0px 0px 12px 0 #7de532;
+}
+
+/* reconcile & for-owns-watches diagrams */
+.svg-diagram img {
+    display: block;
+    width: 80%;
+    height: 80%;
+    margin-top: 2em;
+    margin-left: auto;
+}
+
+/* hide some unimportant stuff in the code */
+code.go .meta.imports.go, code.go .keyword.other.import  {
+    font-size: 50%;
+}
+code.go .meta.imports.go {
+    font-size: 50%;
+}
+
+code.inline {
+    white-space: nowrap;
+}
